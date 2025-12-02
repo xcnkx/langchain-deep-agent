@@ -3,9 +3,6 @@ name = "langchain-deep-agent"
 version = "0.1.0"
 description = "LangChain Deep Agent - A Python template project for building AI agents using LangChain"
 readme = "README.md"
-authors = [
-    { name = "copilot-swe-agent[bot]", email = "198982749+Copilot@users.noreply.github.com" }
-]
 requires-python = ">=3.12"
 dependencies = [
     "langchain>=1.1.0",

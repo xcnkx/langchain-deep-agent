@@ -30,6 +30,12 @@ This project is a template for building AI agents using LangChain's Python API. 
 - uv (Python package manager)
 - OpenAI API key
 
+## クイックスタート (Quick Start)
+
+最速で始めたい方は [QUICKSTART.md](QUICKSTART.md) をご覧ください。
+
+For the fastest way to get started, see [QUICKSTART.md](QUICKSTART.md).
+
 ## セットアップ (Setup)
 
 ### 1. uvのインストール (Install uv)
@@ -138,6 +144,23 @@ uv remove package-name
 
 ```bash
 uv run your_script.py
+```
+
+### Makefileコマンド (Makefile Commands)
+
+便利なMakefileコマンドも利用できます:
+
+Convenient Makefile commands are also available:
+
+```bash
+make help       # Show all available commands
+make install    # Install dependencies
+make test       # Run setup verification tests
+make run-basic  # Run basic agent example
+make run-chat   # Run chat agent example
+make run-tools  # Run tools agent example
+make setup-env  # Create .env from .env.example
+make clean      # Clean up generated files
 ```
 
 ### 仮想環境のアクティベート (Activate virtual environment)

@@ -156,6 +156,8 @@ Convenient Makefile commands are also available:
 make help       # Show all available commands
 make install    # Install dependencies
 make test       # Run setup verification tests
+make lint       # Run ruff linter and formatter
+make lint-fix   # Run ruff with auto-fix
 make run-basic  # Run basic agent example
 make run-chat   # Run chat agent example
 make run-tools  # Run tools agent example

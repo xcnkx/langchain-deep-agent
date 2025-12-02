@@ -1,4 +1,4 @@
-.PHONY: help install test run-basic run-chat run-tools clean
+.PHONY: help install test lint run-basic run-chat run-tools clean
 
 help: ## Show this help message
 	@echo 'Usage: make [target]'
@@ -11,6 +11,14 @@ install: ## Install dependencies with uv
 
 test: ## Run setup verification tests
 	uv run tests/test_setup.py
+
+lint: ## Run ruff linter and formatter
+	uv run ruff check .
+	uv run ruff format --check .
+
+lint-fix: ## Run ruff linter and formatter with auto-fix
+	uv run ruff check --fix .
+	uv run ruff format .
 
 run-basic: ## Run basic agent example
 	uv run examples/basic_agent.py

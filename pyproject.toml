@@ -14,3 +14,39 @@ dependencies = [
 [build-system]
 requires = ["uv_build>=0.9.14,<0.10.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.7",
+]
+
+[tool.ruff]
+# Set the maximum line length to 100
+line-length = 100
+
+# Target Python 3.12+
+target-version = "py312"
+
+# Exclude common directories
+exclude = [
+    ".venv",
+    "__pycache__",
+    ".git",
+    ".ruff_cache",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+# Enable pycodestyle (E, W), Pyflakes (F), and isort (I) rules
+select = ["E", "F", "W", "I"]
+
+# Ignore specific rules if needed
+ignore = []
+
+[tool.ruff.format]
+# Use double quotes for strings
+quote-style = "double"
+
+# Indent with spaces
+indent-style = "space"

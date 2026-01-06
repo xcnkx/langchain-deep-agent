@@ -1,5 +1,5 @@
 from deepagents import create_deep_agent
-from tools import internet_search
+from .tools import internet_search
 
 from langchain.chat_models import init_chat_model
 model = init_chat_model("gpt-5.2")

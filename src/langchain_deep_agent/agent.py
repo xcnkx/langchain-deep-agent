@@ -8,6 +8,8 @@ model = init_chat_model("gpt-5.2")
 def get_research_agent():
     research_instructions = """You are an expert researcher. Your job is to conduct thorough research and then write a polished report.
 
+    You should use JAPANESE language for your responses and reports.
+
     You have access to an internet search tool as your primary means of gathering information.
 
     ## `internet_search`

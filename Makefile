@@ -20,7 +20,7 @@ lint-fix: ## Run ruff linter and formatter with auto-fix
 	uv run ruff check --fix .
 	uv run ruff format .
 
-run-deep-search-agent: ## Run basic agent example
+run-deep-search-agent: ## Run deep search agent example
 	uv run src/langchain_deep_agent/agent.py
 
 run-chat: ## Run interactive chat agent

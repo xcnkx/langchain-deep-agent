@@ -1,7 +1,12 @@
 from deepagents import create_deep_agent
-from .tools import internet_search
-
+from langchain_deep_agent.tools import internet_search
+from langchain_deep_agent.subagents import get_research_subagent
+from deepagents import create_deep_agent
+from deepagents.backends import CompositeBackend, StateBackend, StoreBackend
+from langgraph.store.memory import InMemoryStore
+from langgraph.checkpoint.memory import MemorySaver
 from langchain.chat_models import init_chat_model
+
 model = init_chat_model("gpt-5.2")
 
 # System prompt to steer the agent to be an expert researcher
@@ -24,9 +29,38 @@ def get_research_agent():
     return agent
 
 
+def get_deep_agent_with_subagent():
+    subagents = [get_research_subagent()]
+
+    agent =  create_deep_agent(
+        model=model,
+        subagents=subagents
+    )
+    return agent
+
+def get_deep_agent_with_memory():
+    checkpointer = MemorySaver()
+
+    def make_backend(runtime):
+        return CompositeBackend(
+            default=StateBackend(runtime),  # Ephemeral storage
+            routes={
+                "/memories/": StoreBackend(runtime)  # Persistent storage
+            }
+        )
+
+    agent = create_deep_agent(
+        store=InMemoryStore(),  # Required for StoreBackend
+        backend=make_backend,
+        checkpointer=checkpointer
+    )
+
+    return agent
+
+
 if __name__ == "__main__":
     agent = get_research_agent()
-    result = agent.invoke({"messages": [{"role": "user", "content": "What is langgraph?"}]})
+    result = agent.invoke({"messages": [{"role": "user", "content": "TAVIのCT計測の問題点を教えて?"}]})
 
     # Print the agent's response
     print(result["messages"][-1].content)
